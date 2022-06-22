@@ -2,6 +2,21 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
+/URPTD/[Ll]ibrary/il2cpp_android_armeabi-v7a/il2cpp_cache/
+/URPTD/[Ll]ibrary/il2cpp_android_arm64-v8a/il2cpp_cache/
+/URPTD/[Ll]ibrary/Il2cppBuildCache/Android/arm64-v8a/
+/URPTD/[Ll]ibrary/Il2cppBuildCache/Android/armeabi-v7a/
+/URPTD/[Ll]ibrary/APIUpdater/
+/URPTD/[Ll]ibrary/Artifacts/
+/URPTD/[Ll]ibrary/BuildPlayerData/
+/URPTD/[Ll]ibrary/PackageCache/
+/URPTD/[Ll]ibrary/PackageManager/
+/URPTD/[Ll]ibrary/PlayerDataCache/
+/URPTD/[Ll]ibrary/ScriptAssemblies/
+/URPTD/[Ll]ibrary/ShaderCache/
+/URPTD/[Ll]ibrary/StateCache/
+/URPTD/[Ll]ibrary/TempArtifacts/
+/URPTD/[Ll]ibrary/UIElements/
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
