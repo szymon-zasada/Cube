@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479dc7ea265c8c44897f40e552ca1f11, type: 3}
+  m_Name: AutoLaser
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: ee0146edd4a3906ddabf419d5734b7af, type: 3}
+  TurretBehaviour: {fileID: 0}
+  damage: 9.5
+  fireRate: 10
+  fireRange: 3
+  rotationSpeed: 1.8
+  maxHealth: 13
+  healthRegen: 0.2
+  critRate: 15
+  critDamage: 50
+  type: 4
+  headType: 2
+  bulletType: 0
+  damageCost: 240
+  fireRateCost: 480
+  fireRangeCost: 480
+  rotationSpeedCost: 240
+  maxHealthCost: 240
+  healthRegenCost: 240
+  critRateCost: 240
+  critDamageCost: 480
+  modifier: 1.16
+  level: 1
+  exp: 0
+  requiredExp: 7500
+  costModifier: 2
+  maxUpgradeCount: 2
+  upgradeCount: 
+  upgradeLevel: 5

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479dc7ea265c8c44897f40e552ca1f11, type: 3}
+  m_Name: HexTurret
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 9da0d0b8ab32a2acf9abbb10d121adff, type: 3}
+  TurretBehaviour: {fileID: 0}
+  damage: 6
+  fireRate: 1.1
+  fireRange: 19
+  rotationSpeed: 1.9
+  maxHealth: 300
+  healthRegen: 0.4
+  critRate: 8
+  critDamage: 150
+  type: 2
+  headType: 2
+  bulletType: 0
+  damageCost: 60
+  fireRateCost: 90
+  fireRangeCost: 150
+  rotationSpeedCost: 60
+  maxHealthCost: 120
+  healthRegenCost: 120
+  critRateCost: 120
+  critDamageCost: 102
+  modifier: 1.16
+  level: 1
+  exp: 0
+  requiredExp: 10000
+  costModifier: 2
+  maxUpgradeCount: 5
+  upgradeCount: 
+  upgradeLevel: 5

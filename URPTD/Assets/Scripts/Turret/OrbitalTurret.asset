@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479dc7ea265c8c44897f40e552ca1f11, type: 3}
+  m_Name: OrbitalTurret
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: e3c4b2e05f652fb978be719216d112aa, type: 3}
+  TurretBehaviour: {fileID: 0}
+  damage: 1.9
+  fireRate: 1.9
+  fireRange: 0.8
+  rotationSpeed: 1.2
+  maxHealth: 10
+  healthRegen: 0.2
+  critRate: 5
+  critDamage: 50
+  type: 3
+  headType: 0
+  bulletType: 3
+  damageCost: 10
+  fireRateCost: 10
+  fireRangeCost: 10
+  rotationSpeedCost: 10
+  maxHealthCost: 10
+  healthRegenCost: 10
+  critRateCost: 10
+  critDamageCost: 10
+  modifier: 1.2
+  level: 1
+  exp: 0
+  requiredExp: 120
+  costModifier: 2
+  maxUpgradeCount: 4
+  upgradeCount: 
+  upgradeLevel: 4

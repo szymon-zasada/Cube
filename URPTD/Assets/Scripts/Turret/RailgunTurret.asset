@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 479dc7ea265c8c44897f40e552ca1f11, type: 3}
+  m_Name: RailgunTurret
+  m_EditorClassIdentifier: 
+  icon: {fileID: 0}
+  TurretBehaviour: {fileID: 0}
+  damage: 12.2
+  fireRate: 0.65
+  fireRange: 15
+  rotationSpeed: 1.2
+  maxHealth: 19
+  healthRegen: 0.3
+  critRate: 18
+  critDamage: 40
+  type: 0
+  headType: 0
+  bulletType: 4
+  damageCost: 40
+  fireRateCost: 80
+  fireRangeCost: 40
+  rotationSpeedCost: 30
+  maxHealthCost: 40
+  healthRegenCost: 60
+  critRateCost: 40
+  critDamageCost: 150
+  modifier: 1.16
+  level: 1
+  exp: 0
+  requiredExp: 390
+  costModifier: 2
+  maxUpgradeCount: 2
+  upgradeCount: 
+  upgradeLevel: 5

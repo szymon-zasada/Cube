@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23c462badc0cb44fa9c3c774d67da2d, type: 3}
+  m_Name: MinigunUpgrade
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6641956864045936978, guid: 753803130d7f6674e89d7de24e00632f, type: 3}
+  cost: 8
+  turretName: Minigun
