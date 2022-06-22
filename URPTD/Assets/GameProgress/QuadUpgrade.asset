@@ -16,7 +16,7 @@ MonoBehaviour:
   iconScale: 50
   unlockName: Quad Turret
   baseCostInGame: 100
-  upgradeCostInGame: 45
+  upgradeCostInGame: 100
   turretPrefab: {fileID: 2149956625488448728, guid: 6600c174d06e889a0a6d394f6b8b57dd, type: 3}
   unlockCost: 190
   reduceCostInGame: 1200

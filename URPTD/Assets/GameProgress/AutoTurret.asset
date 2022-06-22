@@ -16,7 +16,7 @@ MonoBehaviour:
   iconScale: 60
   unlockName: Auto Turret
   baseCostInGame: 50
-  upgradeCostInGame: 25
+  upgradeCostInGame: 65
   turretPrefab: {fileID: 5609818962822396002, guid: 0425f7e93b0d30d9389567340e82203c, type: 3}
   unlockCost: 100
   reduceCostInGame: 650

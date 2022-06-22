@@ -28,7 +28,7 @@ public class ShopUnlock : ScriptableObject
     {
         reduceCostLeft -= 1;
         reduceCostInGame *= 2;
-        baseCostInGame /= 2;
+        upgradeCostInGame /= 2;
     }
 
     public void SetStatsFromSave(ShopUnlockSerializable shopUnlock)

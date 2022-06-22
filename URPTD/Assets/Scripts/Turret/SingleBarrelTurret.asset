@@ -40,4 +40,4 @@ MonoBehaviour:
   costModifier: 2
   maxUpgradeCount: 2
   upgradeCount: 
-  upgradeLevel: 3
+  upgradeLevel: 5

@@ -112,6 +112,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (c.gameObject.tag != "Turret")
             return;
+        Debug.Log("XD");
         TurretBehaviour turretBehaviour = c.gameObject.GetComponent<TurretBehaviour>();
         if (turretBehaviour.IsDead)
             return;

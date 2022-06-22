@@ -44,7 +44,7 @@ public class EnemyGenerator : MonoBehaviour
             Mathf.Clamp(1 / bodyTransform.localScale.x, 0.05f, 0.85f), //speed
             4.5f * difficultyFactor, //damage
             (int)(235f * difficultyFactor * bodyTransform.localScale.x), //cashvalue
-            0.35f + (GameManager.Instance.Difficulty * 0.3f) //crystalchance
+            0.15f //crystalchance
         );
     }
 
@@ -64,18 +64,19 @@ public class EnemyGenerator : MonoBehaviour
             Mathf.Clamp(1 / bodyTransform.localScale.x, 0.05f, 0.2f), //speed
             15.5f * difficultyFactor, //damage
             (int)(320f * difficultyFactor * bodyTransform.localScale.x), //cashvalue
-            0.25f //crystalchance
+            1 //crystalchance
         );
     }
 
  
     void BodyTransform(float difficultyFactor)
     {
-        transform.localScale *= Mathf.Clamp(difficultyFactor, 0.4f, 4f);
-        deadBodyTransform.localScale *= Mathf.Clamp(difficultyFactor, 0.2f, 2f);
+        float size = Mathf.Clamp(difficultyFactor, 0.4f, 3f);
+        transform.localScale *= size;
+        deadBodyTransform.localScale *= size;
         transform.position = new Vector3(bodyTransform.position.x, bodyTransform.localScale.y * 0.25f - 0.05f, bodyTransform.position.z);
         //deadBodyTransform.position = new Vector3(bodyTransform.position.x, deadBodyTransform.localScale.y * 0.25f, bodyTransform.position.z);
-        //bodyCollider.size *= difficultyFactor * 1.2f;
+        //bodyCollider.size *= size;
         canvas.localPosition = new Vector3(0f,0.3f+bodyTransform.localScale.y, -0.3f);
     }
 

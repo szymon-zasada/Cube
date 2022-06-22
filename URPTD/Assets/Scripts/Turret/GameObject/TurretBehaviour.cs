@@ -239,7 +239,6 @@ public class TurretBehaviour : MonoBehaviour
 
     public bool SecondUpgradeTurret()
     {
-        Debug.Log("SECUNDO");
         if (gameManager.CrystalAmount < possibleUpgrade2.UpgradeCostInGame)
             return false;
 
@@ -317,7 +316,7 @@ public class TurretBehaviour : MonoBehaviour
 
     bool EnemyInline() //! HEAVY PERFORMANCE
     {
-        if (Vector3.Dot((targetPosition - turretHead.transform.position).normalized, turretHead.transform.forward) < 0.99f)
+        if (Vector3.Dot((new Vector3(targetPosition.x, 0, targetPosition.z) - turretHead.transform.position).normalized, turretHead.transform.forward) < 0.98f)
             return false;
 
         return true;

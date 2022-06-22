@@ -16,7 +16,7 @@ MonoBehaviour:
   iconScale: 50
   unlockName: Orbital Turret
   baseCostInGame: 125
-  upgradeCostInGame: 50
+  upgradeCostInGame: 100
   turretPrefab: {fileID: 9200317388176075595, guid: 638d9040efaeb4ad1b0c51ce24ff88ba, type: 3}
   unlockCost: 190
   reduceCostInGame: 1320

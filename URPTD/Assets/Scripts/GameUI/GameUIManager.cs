@@ -290,9 +290,15 @@ public class GameUIManager : MonoBehaviour
     {
         if (UpgradeTarget.PossibleUpgrade == null || !UpgradeTarget.PossibleUpgrade.IsUnlocked)
         {
-            if (UpgradeTarget.PossibleUpgrade2 != null || UpgradeTarget.PossibleUpgrade2.IsUnlocked)
+            if (UpgradeTarget.PossibleUpgrade2 == null)
             {
-                Debug.Log("XD");
+                upgradeBtn.SetActive(false);
+                return;
+            }
+
+
+            if (UpgradeTarget.PossibleUpgrade2.IsUnlocked)
+            {
                 upgradeBtn.SetActive(true);
                 possibleUpgrade.text = UpgradeTarget.PossibleUpgrade2.UnlockName;
                 upgradeBtn.GetComponent<Button>().onClick.AddListener(UpgradeToSecondNextTurret);

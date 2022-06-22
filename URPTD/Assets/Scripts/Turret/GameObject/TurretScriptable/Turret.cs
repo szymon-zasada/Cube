@@ -280,7 +280,7 @@ public class Turret : ScriptableObject
         SoundManager.Instance.PlaySound(SoundManager.Instance.LevelUp);
         TurretBehaviour.HealthBarScript.HealthRegenHpBar(health, maxHealth);
         TurretBehaviour.PlayLevelUp();
-        requiredExp = (int)((float)requiredExp * 2.35f);
+        requiredExp = (int)((float)requiredExp * 2.5f);
         exp = 0;
         maxUpgradeCount += 3;
     }

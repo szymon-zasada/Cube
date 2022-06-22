@@ -57,7 +57,7 @@ public class SpawningManager : MonoBehaviour
 
     async void SpawnTick(float tickTime)
     {
-        float minValue = 1 + gameManager.Wave;
+        float minValue = 1 + gameManager.Wave * gameManager.Turrets.Count;
         float maxValue = minValue * 1.4f;
 
 
