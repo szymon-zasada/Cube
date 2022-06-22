@@ -601,7 +601,7 @@ MonoBehaviour:
   stage: 1
   wave: 0
   difficulty: 0
-  CrystalAmount: 2222
+  CrystalAmount: 10
   CashAmount: 25
   ScoreAmount: 0
 --- !u!4 &258796416
@@ -1232,7 +1232,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 555311510}
-  m_LocalRotation: {x: -0.024992581, y: -0.000000013453154, z: 0.000000010727169, w: 0.9996876}
+  m_LocalRotation: {x: -0.024992581, y: 0.000000013453153, z: -0.0000000107271685, w: 0.9996876}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5127,11 +5127,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2200773527827308339, guid: 2950d71260ff49b4d8281b89ac92d546, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000016311956
+      value: 0.000000016311954
       objectReference: {fileID: 0}
     - target: {fileID: 2200773527827308339, guid: 2950d71260ff49b4d8281b89ac92d546, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000054784044
+      value: -0.000000005478405
       objectReference: {fileID: 0}
     - target: {fileID: 2200773527827308339, guid: 2950d71260ff49b4d8281b89ac92d546, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -64,7 +64,7 @@ public class EnemyGenerator : MonoBehaviour
             Mathf.Clamp(1 / bodyTransform.localScale.x, 0.05f, 0.2f), //speed
             15.5f * difficultyFactor, //damage
             (int)(320f * difficultyFactor * bodyTransform.localScale.x), //cashvalue
-            1 //crystalchance
+            0.25f //crystalchance
         );
     }
 
