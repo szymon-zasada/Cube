@@ -20,6 +20,11 @@ public class PoolsManager : MonoBehaviour
     [SerializeField] Queue<BulletStruct> bulletPool;
 
 
+    [Header("PickUps")]
+    [SerializeField] GameObject pickupPrefab;
+    [SerializeField] int pickupPoolSize;
+    [SerializeField] Queue<GameObject> pickupPool;
+
 
     void Start()
     {
@@ -38,6 +43,13 @@ public class PoolsManager : MonoBehaviour
         {
             GameObject obj = Instantiate(enemyPrefab, -transform.position, transform.rotation);
             enemyPool.Enqueue(obj);
+        }
+
+        pickupPool = new Queue<GameObject>();
+        for (int i = 0; i < pickupPoolSize; i++)
+        {
+            GameObject obj = Instantiate(pickupPrefab, -transform.position, transform.rotation);
+            pickupPool.Enqueue(obj);
         }
     }
 
@@ -67,6 +79,14 @@ public class PoolsManager : MonoBehaviour
 
         bulletPool.Enqueue(objectToSpawn);
         return objectToSpawn.bullet;
+    }
+
+    public void SpawnPickUp(Vector3 position, Quaternion rotation)
+    {
+        GameObject x = pickupPool.Dequeue();
+        x.transform.position = position;
+        x.SetActive(true);
+        pickupPool.Enqueue(x);
     }
 
     public void SpawnEnemy(Vector3 position, bool IsBoss)

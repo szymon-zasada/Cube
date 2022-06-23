@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour
     public SpawningManager SpawningManager => spawningManager;
     [SerializeField] GameUIManager gameUIManager;
     public GameUIManager GameUIManager => gameUIManager;
-
     [SerializeField] GameObject turretSpawnArea;
     public GameObject TurretSpawnArea => turretSpawnArea;
 

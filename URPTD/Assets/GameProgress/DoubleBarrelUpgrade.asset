@@ -16,7 +16,7 @@ MonoBehaviour:
   iconScale: 85
   unlockName: Double Barrel Turret
   baseCostInGame: 25
-  upgradeCostInGame: 25
+  upgradeCostInGame: 12
   turretPrefab: {fileID: 6111173739930977156, guid: 7dc4354b86b7b62459acb1e276407399, type: 3}
   unlockCost: 125
   reduceCostInGame: 650

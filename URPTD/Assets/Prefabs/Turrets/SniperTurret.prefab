@@ -11487,8 +11487,8 @@ MonoBehaviour:
   animatorSingle: {fileID: 6435128869727184173}
   animatorDouble: {fileID: 0}
   animatorSpecial: {fileID: 0}
-  possibleUpgrade: {fileID: 11400000, guid: 580ab6a91b90070d3b3f3ad77843e7d8, type: 2}
-  possibleUpgrade2: {fileID: 11400000, guid: 49ee316958aa37647ad7fa4d107b25d6, type: 2}
+  possibleUpgrade: {fileID: 11400000, guid: df29a86279e847b13a701b158a803ebf, type: 2}
+  possibleUpgrade2: {fileID: 11400000, guid: f133a4fca836bbee18f23fa436fef646, type: 2}
   targetPosition: {x: 0, y: 0, z: 0}
   isReloading: 0
   isReloading2: 0

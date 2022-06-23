@@ -26,12 +26,12 @@ MonoBehaviour:
   headType: 0
   bulletType: 1
   damageCost: 15
-  fireRateCost: 15
-  fireRangeCost: 10
-  rotationSpeedCost: 10
+  fireRateCost: 10
+  fireRangeCost: 5
+  rotationSpeedCost: 5
   maxHealthCost: 10
   healthRegenCost: 15
-  critRateCost: 100
+  critRateCost: 60
   critDamageCost: 150
   modifier: 1.16
   level: 1

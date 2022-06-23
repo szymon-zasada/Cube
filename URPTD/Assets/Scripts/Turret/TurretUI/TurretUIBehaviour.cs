@@ -16,6 +16,15 @@ public class TurretUIBehaviour : MonoBehaviour
 
     void OnMouseDown()
     {
+        if(gameUIManager.isChoosingTurret)
+        {
+            turretBehaviour.turret.BoostEffect(gameUIManager.GeneratedBoost, 
+                                                gameUIManager.GeneratedStrength, 
+                                                gameUIManager.GeneratedDuration);
+            gameUIManager.isChoosingTurret = false;
+            return;
+        }
+
         cameraPoint.SetPosition(transform.position);
         GameManager.Instance.CameraPoint.SetPosition(transform.position);
         gameUIManager.SetUITarget(turretBehaviour);

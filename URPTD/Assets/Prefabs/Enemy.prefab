@@ -675,6 +675,7 @@ MonoBehaviour:
   damageTakenLaser: {fileID: 8300000, guid: 1d3340c223f6382bea4659ec3066d2cd, type: 3}
   damageTakenCritLaser: {fileID: 8300000, guid: 794ee8f732858dc5bbfa511de81c6a42, type: 3}
   targetPosition: {x: 0, y: 0, z: 0}
+  pickUpChance: 50
   IsBoss: 0
   Enemy: {fileID: 0}
 --- !u!114 &6886891809205014383

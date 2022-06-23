@@ -16,7 +16,7 @@ MonoBehaviour:
   iconScale: 60
   unlockName: Tripple Barrel Turret
   baseCostInGame: 50
-  upgradeCostInGame: 65
+  upgradeCostInGame: 40
   turretPrefab: {fileID: 437030373846152870, guid: caac3488bffc74b51b647c84dec9aedc, type: 3}
   unlockCost: 100
   reduceCostInGame: 650

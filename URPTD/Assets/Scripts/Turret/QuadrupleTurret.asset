@@ -33,7 +33,7 @@ MonoBehaviour:
   healthRegenCost: 90
   critRateCost: 120
   critDamageCost: 250
-  modifier: 1.2
+  modifier: 1.16
   level: 1
   exp: 0
   requiredExp: 45

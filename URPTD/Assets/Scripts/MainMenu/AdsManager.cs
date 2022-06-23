@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener, IUnityAdsInitializationListener
 {
-    public readonly static string ANDROID_KEY = "4791287";
-    public readonly static string IOS_KEY = "4791286";
+    public readonly static string ANDROID_KEY = "4791287", IOS_KEY = "4791286";
     [SerializeField] GameObject energyButton;
     Button energyBtn;
     [SerializeField] MainManuBtnHandle btnHandle;
@@ -23,7 +22,6 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
-        Debug.Log("AD LOADED " + adUnitId);
         if(btnHandle.GS.Energy == 100)
             return;
 
@@ -45,7 +43,6 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     {
         if (adUnitId.Equals("Rewarded_Android") && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
-            Debug.Log("ADS REWARDED");
             btnHandle.GS.AddEnergy(20);
             btnHandle.EnergyHandle();
             Advertisement.Load("Rewarded_Android", this);
@@ -55,14 +52,12 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
     // Implement Load and Show Listener error callbacks:
     public void OnUnityAdsFailedToLoad(string adUnitId, UnityAdsLoadError error, string message)
     {
-        Debug.Log($"Error loading Ad Unit {adUnitId}: {error.ToString()} - {message}");
-        // Use the error details to determine whether to try to load another ad.
+
     }
 
     public void OnUnityAdsShowFailure(string adUnitId, UnityAdsShowError error, string message)
     {
-        Debug.Log($"Error showing Ad Unit {adUnitId}: {error.ToString()} - {message}");
-        // Use the error details to determine whether to try to load another ad.
+
     }
 
     public void OnUnityAdsShowStart(string adUnitId) { }
@@ -83,7 +78,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLis
 
     public void OnInitializationFailed(UnityAdsInitializationError error, string message)
     {
-        Debug.Log($"Unity Ads Initialization Failed: {error.ToString()} - {message}");
+        
     }
 
 

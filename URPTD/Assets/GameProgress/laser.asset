@@ -16,10 +16,10 @@ MonoBehaviour:
   iconScale: 70
   unlockName: Laser Turret
   baseCostInGame: 25
-  upgradeCostInGame: 20
+  upgradeCostInGame: 12
   turretPrefab: {fileID: 1004279394472070326, guid: e271eab24d2c45d4189551111fab7bb9, type: 3}
   unlockCost: 10
   reduceCostInGame: 650
-  reduceCostLeft: 0
+  reduceCostLeft: 2
   canBePurchased: 0
   isUnlocked: 1

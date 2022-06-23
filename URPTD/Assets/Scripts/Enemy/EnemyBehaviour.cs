@@ -14,6 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField] AudioClip damageTakenProjectile, damageTakenCritProjectile, damageTakenLaser, damageTakenCritLaser;
     [SerializeField] Vector3? targetPositionNullable;
     [SerializeField] Vector3 targetPosition;
+    [SerializeField] float pickUpChance = 1f;
     GameManager gameManager = GameManager.Instance;
     public bool IsBoss = false;
 
@@ -37,7 +38,7 @@ public class EnemyBehaviour : MonoBehaviour
             Enemy = enemyGenerator.GenerateBossStats();
         else
             Enemy = enemyGenerator.GenerateRandomStats();
-            
+
         agent.speed = Enemy.Speed;
         gameManager.AddEnemy(transform);
 
@@ -95,6 +96,7 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (Enemy.Health <= 0f)
         {
+            PickUpHandle();
             agent.destination = transform.position;
             gameManager.KillEnemy(transform);
             turret.AddExp(Enemy.CashValue);
@@ -102,6 +104,12 @@ public class EnemyBehaviour : MonoBehaviour
             gameManager.EnemyDeath(Enemy.CashValue, Enemy.HasCrystal);
             enemyGenerator.DeathTransition();
         }
+    }
+
+    void PickUpHandle()
+    {
+        if (Random.Range(0, 100f) < pickUpChance)
+            PoolsManager.Instance.SpawnPickUp(transform.position, transform.rotation);
     }
 
 
@@ -112,7 +120,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         if (c.gameObject.tag != "Turret")
             return;
-        Debug.Log("XD");
         TurretBehaviour turretBehaviour = c.gameObject.GetComponent<TurretBehaviour>();
         if (turretBehaviour.IsDead)
             return;

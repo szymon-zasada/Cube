@@ -10,7 +10,7 @@ public class Turret : ScriptableObject
 {
     #region Variables
 
-    
+
     public Sprite icon;
     public TurretBehaviour TurretBehaviour;
     //v________________________________________________________________________________________________________________________________________________________
@@ -41,9 +41,9 @@ public class Turret : ScriptableObject
 
 
     //V________________________________________________________________________________________________________________________________________________________
-
-    public float Damage => damage;
-    public float FireRate => fireRate;
+    [SerializeField] float damageOutput, fireRateOutput;
+    public float Damage => damageOutput;
+    public float FireRate => fireRateOutput;
     public float FireRange => fireRange;
     public float RotationSpeed => rotationSpeed;
     public float CritRate => critRate;
@@ -93,6 +93,7 @@ public class Turret : ScriptableObject
             return;
 
         damage *= modifier;
+        damageOutput *= modifier;
         GameManager.Instance.CashAmount -= damageCost;
         damageCost *= (int)costModifier;
         upgradeAmount++;
@@ -108,6 +109,7 @@ public class Turret : ScriptableObject
             return;
 
         fireRate *= modifier;
+        fireRateOutput *= modifier;
         GameManager.Instance.CashAmount -= fireRateCost;
         fireRateCost *= (int)costModifier;
         upgradeAmount++;
@@ -127,7 +129,7 @@ public class Turret : ScriptableObject
         upgradeAmount++;
         upgradeCount[4]++;
 
-        if(type == TurretType.orbital)
+        if (type == TurretType.orbital)
             TurretBehaviour.AddRangeOrbital();
         UpdateGameUI();
     }
@@ -213,7 +215,7 @@ public class Turret : ScriptableObject
     #region LevelUpgrades
     public bool CanBeUpgradedToNext()
     {
-        if(level < upgradeLevel)
+        if (level < upgradeLevel)
             return false;
         return true;
     }
@@ -253,7 +255,7 @@ public class Turret : ScriptableObject
     public int MaxUpgradeCount => maxUpgradeCount;
     [SerializeField] int[] upgradeCount;
 
-    
+
 
     public void AddExp(int value)
     {
@@ -327,10 +329,38 @@ public class Turret : ScriptableObject
         clone.requiredExp = turret.requiredExp;
         clone.upgradeLevel = turret.upgradeLevel;
         clone.icon = turret.icon;
+        clone.damageOutput = clone.damage;
+        clone.fireRateOutput = clone.fireRate;
 
         return clone;
     }
 
+    public void BoostEffect(int i, int strength, int duration)
+    {
+        switch (i)
+        {
+            case 0:
+                OverloadedBoost(strength,duration);
+            break;
+
+
+
+            default:
+            break;
+        }
+    }
+
+
+    public async void OverloadedBoost(float strength, float duration)
+    {
+        damageOutput = damage * (1 + strength / 100);
+        while (duration > 0f)
+        {
+            duration -= Time.deltaTime;
+            await Task.Yield();
+        }
+        damageOutput = damage;
+    }
 
 
 

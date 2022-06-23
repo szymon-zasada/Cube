@@ -16,7 +16,7 @@ MonoBehaviour:
   iconScale: 50
   unlockName: Auto Laser
   baseCostInGame: 50
-  upgradeCostInGame: 65
+  upgradeCostInGame: 40
   turretPrefab: {fileID: 614232587699088751, guid: bb513398c68ad2e5092fee7d5dea8f6c, type: 3}
   unlockCost: 120
   reduceCostInGame: 500

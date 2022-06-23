@@ -16,7 +16,7 @@ MonoBehaviour:
   iconScale: 70
   unlockName: Railgun Turret
   baseCostInGame: 25
-  upgradeCostInGame: 25
+  upgradeCostInGame: 12
   turretPrefab: {fileID: 2550033750884894695, guid: b3e2dc4e69c0c735fae18dbc8101253e, type: 3}
   unlockCost: 10
   reduceCostInGame: 650

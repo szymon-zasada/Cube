@@ -11,7 +11,7 @@ public class GameUIManager : MonoBehaviour
 {
     //v________________________________________________________________________________________________________________________________________________________
     [SerializeField] TMP_Text cash, score, crystal;
-    [SerializeField] GameObject StartBtn, nextWaveBtn, stats, rightPanel, rightPanelContent, upgradePanel, upgradeBtn, endScreen, endStats, mainMenuBtn, best, upgradeBtn2;
+    [SerializeField] GameObject StartBtn, nextWaveBtn, stats, rightPanel, rightPanelContent, upgradePanel, upgradeBtn, endScreen, endStats, mainMenuBtn, best, upgradeBtn2, popUp;
     [SerializeField] List<TMP_Text> buyTurretValues = new List<TMP_Text>();
     [SerializeField] List<TMP_Text> upgradeBtnValues = new List<TMP_Text>();
     [SerializeField] List<TMP_Text> upgradeBtnCosts = new List<TMP_Text>();
@@ -23,6 +23,7 @@ public class GameUIManager : MonoBehaviour
     [SerializeField] Color buttonNotAvailable, buttonMax;
     [SerializeField] Image turretIcon;
     GameManager gameManager;
+    InGameAds inGameAds;
 
 
     [SerializeField] TurretBehaviour UpgradeTarget;
@@ -57,18 +58,9 @@ public class GameUIManager : MonoBehaviour
 
     }
 
-    public async void SetStageWave(float stage, float wave)
+    public void SetStageWave(float stage, float wave)
     {
-        float timer = 2f;
         stageWave.text = $"Stage {stage} Wave {wave}";
-        while (timer > 0f)
-        {
-            timer -= Time.deltaTime;
-            stageWave.color = new Color32(255, 255, 255, (byte)(127 * timer));
-            await Task.Yield();
-        }
-        stageWave.text = "XD";
-        stageWave.color = new Color32(255, 255, 255, 0);
     }
 
     void SetCrystalShop()
@@ -397,10 +389,91 @@ public class GameUIManager : MonoBehaviour
         StartBtn.SetActive(false);
     }
 
+    #region pickups
+    int generatedCrystal, generatedCash, generatedBoost, generatedStrength, generatedDuration;
+    public int GeneratedBoost => generatedBoost;
+    public int GeneratedStrength => generatedStrength;
+    public int GeneratedDuration => generatedDuration;
+    public bool isChoosingTurret = false;
+    [SerializeField] Sprite defaultIcon;
+    [SerializeField] Image iconSlot;
+    [SerializeField] TMP_Text defaultName;
+    [Header("PopUpOptions")]
+    [SerializeField] TMP_Text cashRewardValue, crystalRewardValue, strengthValue, durationValue;
+    [SerializeField] GameObject cashPopUp, boostPopUp;
+    [SerializeField] List<Boost> boostIcons = new List<Boost>();
+    public void GeneratePopUpValue(bool isBoost)
+    {
+        popUp.SetActive(true);
+        Time.timeScale = 0f;
+        cashPopUp.SetActive(false);
+        boostPopUp.SetActive(false);
+        iconSlot.sprite = defaultIcon;
+        defaultName.text = "You received:";
+        if (isBoost)
+        {
+            boostPopUp.SetActive(true);
+            generatedBoost = (int)UnityEngine.Random.Range(0, boostIcons.Count - 1);
+            defaultName.text = boostIcons[generatedBoost].Name;
+            iconSlot.sprite = boostIcons[generatedBoost].Icon;
+            generatedStrength = (int)UnityEngine.Random.Range(20, 150);
+            generatedDuration = (int)UnityEngine.Random.Range(5, 12);
+            strengthValue.text = $"Boost strength: +{generatedStrength}%";
+            durationValue.text = $"Boost strength: {generatedDuration}s";
+            isChoosingTurret = true;
+            return;
+        }
 
+        cashPopUp.SetActive(true);
+        float minValue = (3000f * gameManager.Difficulty * gameManager.Stage);
+        generatedCash = (int)UnityEngine.Random.Range(minValue, minValue * 2f);
 
+        minValue = (20 * gameManager.Difficulty * gameManager.Stage);
+        generatedCrystal = (int)UnityEngine.Random.Range(minValue, minValue * 2f);
 
+        popUp.SetActive(true);
+        cashRewardValue.text = generatedCash.ToString();
+        crystalRewardValue.text = generatedCrystal.ToString();
+    }
 
+    public void GetNormalBoost()
+    {
+        Debug.Log("XD");
+        isChoosingTurret = true;
+        popUp.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void GetAdBoost()
+    {
+        generatedStrength *= 2;
+        generatedDuration *= 2;
+        isChoosingTurret = true;
+        popUp.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void GetNormalReward()
+    {
+        gameManager.CashAmount += generatedCash;
+        gameManager.CrystalAmount += generatedCrystal;
+        popUp.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void GetAdReward()
+    {
+        gameManager.CashAmount += (generatedCash * 2);
+        gameManager.CrystalAmount += (generatedCrystal * 2);
+        popUp.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void GeneratePopupBoost()
+    {
+
+    }
+    #endregion
 
 
     public void BuyMaxHealth() => UpgradeTarget.turret.BuyMaxHealthBoost();
@@ -420,4 +493,11 @@ public class GameUIManager : MonoBehaviour
     }
 
 
+}
+
+[Serializable]
+public class Boost
+{
+    public string Name;
+    public Sprite Icon;
 }

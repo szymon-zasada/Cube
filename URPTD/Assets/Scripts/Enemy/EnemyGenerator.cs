@@ -40,11 +40,11 @@ public class EnemyGenerator : MonoBehaviour
         MaterialChange();
 
         return Enemy.CreateInstance(
-            (30 * (difficultyFactor * difficultyFactor)) - 10f, //maxhealth
+            (22 * (difficultyFactor * difficultyFactor)) - 2f, //maxhealth
             Mathf.Clamp(1 / bodyTransform.localScale.x, 0.05f, 0.85f), //speed
             4.5f * difficultyFactor, //damage
             (int)(235f * difficultyFactor * bodyTransform.localScale.x), //cashvalue
-            0.15f //crystalchance
+            0.22f //crystalchance
         );
     }
 

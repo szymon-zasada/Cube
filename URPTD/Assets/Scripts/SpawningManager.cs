@@ -24,8 +24,8 @@ public class SpawningManager : MonoBehaviour
         gameManager.AddDifficulty(0.04f);
 
 
-        int tickAmount = 2 + (gameManager.Wave * 2);
-        float tickTime = 8 - (gameManager.Wave / 2);
+        int tickAmount = (gameManager.Wave * 2);
+        float tickTime = 8 - (gameManager.Wave / 3);
 
         SpawnSequence(tickAmount, tickTime);
     }
@@ -57,7 +57,7 @@ public class SpawningManager : MonoBehaviour
 
     async void SpawnTick(float tickTime)
     {
-        float minValue = 1 + gameManager.Wave * gameManager.Turrets.Count;
+        float minValue = 1 + gameManager.Wave * (gameManager.Turrets.Count * 0.8f);
         float maxValue = minValue * 1.4f;
 
 

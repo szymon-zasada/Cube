@@ -316,7 +316,7 @@ public class TurretBehaviour : MonoBehaviour
 
     bool EnemyInline() //! HEAVY PERFORMANCE
     {
-        if (Vector3.Dot((new Vector3(targetPosition.x, 0, targetPosition.z) - turretHead.transform.position).normalized, turretHead.transform.forward) < 0.98f)
+        if (Vector3.Dot((new Vector3(targetPosition.x, 0, targetPosition.z) - turretHead.transform.position).normalized, turretHead.transform.forward) < 0.99f)
             return false;
 
         return true;

@@ -20,6 +20,6 @@ MonoBehaviour:
   turretPrefab: {fileID: 8165475397387731500, guid: d7df4054352e7484ab98701382c4d287, type: 3}
   unlockCost: 25
   reduceCostInGame: 500
-  reduceCostLeft: 2
+  reduceCostLeft: 0
   canBePurchased: 1
   isUnlocked: 1
