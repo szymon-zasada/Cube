@@ -31,6 +31,7 @@ public class TurretBehaviour : MonoBehaviour
     [Header("Particles")]
     [SerializeField] ParticleSystem deathExplosion;
     [SerializeField] ParticleSystem levelUpEffect;
+    [SerializeField] List<ParticleSystem> boostEffects = new List<ParticleSystem>();
 
     [Header("Animators")]
     [SerializeField] Animator animatorSingle;
@@ -51,6 +52,7 @@ public class TurretBehaviour : MonoBehaviour
     GameManager gameManager;
     public bool IsDead => isDead;
 
+    [SerializeField] GameObject skillList;
 
     //F________________________________________________________________________________________________________________________________________________________
 
@@ -61,6 +63,10 @@ public class TurretBehaviour : MonoBehaviour
         turrett.TurretBehaviour = this;
         gameManager = GameManager.Instance;
         GameManager.Instance.AddTurret(transform);
+
+        foreach (Transform x in skillList.transform)
+            boostEffects.Add(x.gameObject.GetComponent<ParticleSystem>());
+
     }
     bool alreadyUpgraded = false;
     #endregion
@@ -181,7 +187,12 @@ public class TurretBehaviour : MonoBehaviour
         }
     }
 
-
+    public void EssenceTick()
+    {
+        turret.EssenceVoid();
+        boostEffects[2].Play();        
+    }
+    
     public void UpdateOrbs(Bullet bullet)
     {
         listOfOrbitalBullets.Find(b => b == bullet).ChangeCrit(isCritical());
@@ -514,6 +525,9 @@ public class TurretBehaviour : MonoBehaviour
     {
         selected.SetActive(x);
     }
+
+    public void PlayBoostEffect(int x) => boostEffects[x].Play();
+    public void StopBoostEffect(int x) => boostEffects[x].Stop();
 }
 
 

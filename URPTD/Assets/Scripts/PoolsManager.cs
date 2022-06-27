@@ -26,6 +26,12 @@ public class PoolsManager : MonoBehaviour
     [SerializeField] Queue<GameObject> pickupPool;
 
 
+    [Header("Lightning")]
+    [SerializeField] GameObject lightningPrefab;
+    [SerializeField] int lightningSize;
+    [SerializeField] Queue<GameObject> lightningPool;
+
+
     void Start()
     {
 
@@ -50,6 +56,15 @@ public class PoolsManager : MonoBehaviour
         {
             GameObject obj = Instantiate(pickupPrefab, -transform.position, transform.rotation);
             pickupPool.Enqueue(obj);
+        }
+
+
+        lightningPool = new Queue<GameObject>();
+        for (int i = 0; i < lightningSize; i++)
+        {
+            GameObject obj = Instantiate(lightningPrefab, -transform.position, transform.rotation);
+            obj.SetActive(false);
+            lightningPool.Enqueue(obj);
         }
     }
 
@@ -97,6 +112,19 @@ public class PoolsManager : MonoBehaviour
         enemyPool.Enqueue(x);
     }
 
+    public void SpawnLightningRay(Turret turret, Vector3 position, Quaternion rotation, bool isCritical)
+    {
+        GameObject objectToSpawn = lightningPool.Dequeue();
+        objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = position;
+        objectToSpawn.transform.rotation = rotation;
+
+        LightningRay x = objectToSpawn.GetComponent<LightningRay>();
+        x.SetStats(turret, isCritical);
+
+        lightningPool.Enqueue(objectToSpawn);
+    }
+
 
 
 
@@ -117,17 +145,6 @@ public class PoolsManager : MonoBehaviour
     #endregion
 }
 
-
-[System.Serializable]
-public struct Pool
-{
-    [SerializeField] GameObject prefab;
-    public GameObject Prefab => prefab;
-    [SerializeField] int size;
-    public int Size => size;
-    [SerializeField] string tag;
-}
-
 [System.Serializable]
 public struct BulletStruct
 {
@@ -140,6 +157,9 @@ public struct BulletStruct
     }
 
 }
+
+
+
 
 [System.Serializable]
 public struct EnemyStruct

@@ -1,8 +1,10 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using System.Threading.Tasks;
+
 
 
 public class EnemyBehaviour : MonoBehaviour
@@ -73,6 +75,9 @@ public class EnemyBehaviour : MonoBehaviour
         if (enemyGenerator.IsDead)
             return;
 
+        if (turret.EssenceReaver)
+            turret.TurretBehaviour.EssenceTick();
+
 
         if (type == TurretType.projectile)
         {
@@ -96,6 +101,8 @@ public class EnemyBehaviour : MonoBehaviour
 
         if (Enemy.Health <= 0f)
         {
+
+
             PickUpHandle();
             agent.destination = transform.position;
             gameManager.KillEnemy(transform);
@@ -103,6 +110,16 @@ public class EnemyBehaviour : MonoBehaviour
             enemyGenerator.IsDead = true;
             gameManager.EnemyDeath(Enemy.CashValue, Enemy.HasCrystal);
             enemyGenerator.DeathTransition();
+            if (turret.Supercharged)
+            {
+                Vector3? newTarget = gameManager.GetClosestEntity(transform.position, turret.FireRange * 5f, gameManager.Enemies);
+                if (!newTarget.HasValue)
+                    return;
+
+
+                PoolsManager.Instance.SpawnLightningRay(turret, transform.position, Quaternion.LookRotation((Vector3)newTarget, Vector3.up), isCritical);
+
+            }
         }
     }
 

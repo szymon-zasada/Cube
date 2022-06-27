@@ -24,10 +24,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b9a4dac9fd0ddb5b8a07d590f0e5ab53, type: 2}
   - {fileID: 11400000, guid: bd7e35065298f03718cb1ed5ab2e683d, type: 2}
   - {fileID: 11400000, guid: d58a56c7bc4cea8d99297239d7b90ac6, type: 2}
-  energy: 0
+  - {fileID: 11400000, guid: 7b8cdcc5c997be8468eaaada996163c0, type: 2}
+  energy: 75
   cCoinCount: 0
   highestScore: 0
-  lastLogged: 1655288755
+  lastLogged: 1656321751
   soundVolume: 0.5
-  musicVolume: 0.15
+  musicVolume: 0.2
   qualIndex: 2

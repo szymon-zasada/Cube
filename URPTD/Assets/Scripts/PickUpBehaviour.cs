@@ -14,6 +14,7 @@ public class PickUpBehaviour : MonoBehaviour
         if (boost.activeSelf)
         {
             GameManager.Instance.GameUIManager.GeneratePopUpValue(true);
+            gameObject.SetActive(false);
             return;
         }
 
@@ -34,6 +35,7 @@ public class PickUpBehaviour : MonoBehaviour
     {
         boost.SetActive(false);
         cash.SetActive(false);
+        SelfDestruction();
 
         if (Random.Range(0f, 100f) < boostChance)
         {
@@ -43,6 +45,5 @@ public class PickUpBehaviour : MonoBehaviour
 
 
         cash.SetActive(true);
-        SelfDestruction();
     }
 }

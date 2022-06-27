@@ -36,8 +36,6 @@ public class MainManuBtnHandle : MonoBehaviour
     {
         Time.timeScale = 1f;
         SaveSys.LOAD_INTO(ref gameStats);
-        if(gameStats.HighestScore == 0)
-            gameStats.AddEnergy(100);
         
         EnergyHandle();
 

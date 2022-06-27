@@ -41,11 +41,11 @@ public class Turret : ScriptableObject
 
 
     //V________________________________________________________________________________________________________________________________________________________
-    [SerializeField] float damageOutput, fireRateOutput;
+    [SerializeField] float damageOutput, fireRateOutput, rotationSpeedOutput;
     public float Damage => damageOutput;
     public float FireRate => fireRateOutput;
     public float FireRange => fireRange;
-    public float RotationSpeed => rotationSpeed;
+    public float RotationSpeed => rotationSpeedOutput;
     public float CritRate => critRate;
     public float CritDamage => critDamage;
     public float Health => health;
@@ -142,6 +142,7 @@ public class Turret : ScriptableObject
             return;
 
         rotationSpeed *= modifier;
+        rotationSpeedOutput *= modifier;
         GameManager.Instance.CashAmount -= rotationSpeedCost;
         rotationSpeedCost *= (int)costModifier;
         upgradeAmount++;
@@ -291,7 +292,7 @@ public class Turret : ScriptableObject
     public int UpgradeLevel => upgradeLevel;
     public int[] UpgradeCount => upgradeCount;
     public int[] GetCosts => new int[] { maxHealthCost, healthRegenCost, damageCost, fireRateCost, fireRangeCost, critRateCost, critDamageCost, rotationSpeedCost };
-    public float[] GetValues => new float[] { maxHealth, healthRegen, damage, fireRate, fireRange, critRate, critDamage, rotationSpeed };
+    public float[] GetValues => new float[] { MaxHealth, HealthRegen, Damage, FireRate, FireRange, CritRate, CritDamage, RotationSpeed };
 
 
     public static Turret CreateInstance(Turret turret)
@@ -331,35 +332,97 @@ public class Turret : ScriptableObject
         clone.icon = turret.icon;
         clone.damageOutput = clone.damage;
         clone.fireRateOutput = clone.fireRate;
+        clone.rotationSpeedOutput = clone.rotationSpeed;
 
         return clone;
     }
 
     public void BoostEffect(int i, int strength, int duration)
     {
+        boostActivated = true;
         switch (i)
         {
             case 0:
-                OverloadedBoost(strength,duration);
-            break;
+                OverloadedBoost(strength, duration);
+                break;
 
+            case 1:
+                SuperchargedBoost(strength, duration);
+                break;
+            
+            case 2:
+                EssenceReaverBoost(strength, duration);
+                break;
 
 
             default:
-            break;
+                break;
         }
     }
 
-
+    public bool boostActivated = false;
+    public bool Supercharged = false, EssenceReaver = false;
     public async void OverloadedBoost(float strength, float duration)
     {
         damageOutput = damage * (1 + strength / 100);
+        fireRateOutput = fireRate * (1 + strength / 100);
+        TurretBehaviour.PlayBoostEffect(0);
         while (duration > 0f)
         {
             duration -= Time.deltaTime;
             await Task.Yield();
         }
         damageOutput = damage;
+        fireRateOutput = fireRate;
+        TurretBehaviour.StopBoostEffect(0);
+        boostActivated = false;
+    }
+
+    public async void SuperchargedBoost(float strength, float duration)
+    {
+        damageOutput = damage * 0.8f;
+        Supercharged = true;
+        fireRateOutput = fireRate * (1 + strength / 100);
+        rotationSpeedOutput = rotationSpeed * (1 + strength / 100);
+        TurretBehaviour.PlayBoostEffect(1);
+        while (duration > 0f)
+        {
+            duration -= Time.deltaTime;
+            await Task.Yield();
+        }
+        damageOutput = damage;
+        fireRateOutput = fireRate;
+        rotationSpeedOutput = rotationSpeed;
+        TurretBehaviour.StopBoostEffect(1);
+        Supercharged = false;
+        boostActivated = false;
+    }
+
+    float essenceReaverModifier = 1f;
+    public async void EssenceReaverBoost(float strength, float duration)
+    {
+        boostActivated = true;
+        essenceReaverModifier *= (1 + strength / 100);
+        EssenceReaver = true;
+        TurretBehaviour.PlayBoostEffect(3);
+        while (duration > 0f)
+        {
+            duration -= Time.deltaTime;
+            await Task.Yield();
+        }
+
+        TurretBehaviour.StopBoostEffect(3);
+        EssenceReaver = false;
+        essenceReaverModifier = 1f;
+        boostActivated = false;
+    }
+
+    public void EssenceVoid()
+    {
+        if(health >= maxHealth)
+            return;
+        
+        health += 0.1f + (damage/60f * essenceReaverModifier);
     }
 
 

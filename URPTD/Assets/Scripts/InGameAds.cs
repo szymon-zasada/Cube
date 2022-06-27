@@ -33,7 +33,7 @@ public class InGameAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowList
     {
         if (adUnitId.Equals("Rewarded_Android") && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
-            if (GameManager.Instance.GameUIManager.isChoosingTurret)
+            if (GameManager.Instance.GameUIManager.BoostPopUP.activeSelf)
             {
                 GameManager.Instance.GameUIManager.GetAdBoost();
                 Advertisement.Load("Rewarded_Android", this);

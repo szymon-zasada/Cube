@@ -74,6 +74,8 @@ public class GameUIManager : MonoBehaviour
             x.transform.SetParent(rightPanelContent.transform);
             x.GetComponent<TurretUnlockBehaviour>().SetUnlockStats(shopUnlock);
         }
+
+        rightPanelContent.transform.localScale = new Vector3(2f,2f,1f);
     }
 
 
@@ -307,8 +309,10 @@ public class GameUIManager : MonoBehaviour
         possibleUpgrade.text = UpgradeTarget.PossibleUpgrade.UnlockName;
         upgradeBtn.GetComponent<Button>().onClick.AddListener(UpgradeToNextTurret);
         upgradeBtn2.SetActive(false);
+        if (UpgradeTarget.PossibleUpgrade2 == null)
+            return;
 
-        if (UpgradeTarget.PossibleUpgrade2 != null || !UpgradeTarget.PossibleUpgrade2.IsUnlocked)
+        if (UpgradeTarget.PossibleUpgrade2.IsUnlocked)
         {
             upgradeBtn2.SetActive(true);
             possibleUpgrade2.text = UpgradeTarget.PossibleUpgrade2.UnlockName;
@@ -387,21 +391,32 @@ public class GameUIManager : MonoBehaviour
         Time.timeScale = 1f;
         GameManager.Instance.SpawningManager.StartWave();
         StartBtn.SetActive(false);
+        
     }
 
     #region pickups
     int generatedCrystal, generatedCash, generatedBoost, generatedStrength, generatedDuration;
-    public int GeneratedBoost => generatedBoost;
-    public int GeneratedStrength => generatedStrength;
-    public int GeneratedDuration => generatedDuration;
-    public bool isChoosingTurret = false;
+
+    public bool ActivateBoost(int id, int str, int dur)
+    {
+        if(UpgradeTarget.turret.boostActivated)
+            return false;
+
+        UpgradeTarget.turret.BoostEffect(id, str, dur);
+        return true;
+    }
+   
+
+
     [SerializeField] Sprite defaultIcon;
     [SerializeField] Image iconSlot;
     [SerializeField] TMP_Text defaultName;
     [Header("PopUpOptions")]
     [SerializeField] TMP_Text cashRewardValue, crystalRewardValue, strengthValue, durationValue;
     [SerializeField] GameObject cashPopUp, boostPopUp;
+    public GameObject BoostPopUP => boostPopUp;
     [SerializeField] List<Boost> boostIcons = new List<Boost>();
+    public List<Boost> BoostIcons => boostIcons;
     public void GeneratePopUpValue(bool isBoost)
     {
         popUp.SetActive(true);
@@ -410,17 +425,18 @@ public class GameUIManager : MonoBehaviour
         boostPopUp.SetActive(false);
         iconSlot.sprite = defaultIcon;
         defaultName.text = "You received:";
+        ClosePanel();
+
         if (isBoost)
         {
             boostPopUp.SetActive(true);
-            generatedBoost = (int)UnityEngine.Random.Range(0, boostIcons.Count - 1);
+            generatedBoost = (int)UnityEngine.Random.Range(0, boostIcons.Count);
             defaultName.text = boostIcons[generatedBoost].Name;
             iconSlot.sprite = boostIcons[generatedBoost].Icon;
-            generatedStrength = (int)UnityEngine.Random.Range(20, 150);
-            generatedDuration = (int)UnityEngine.Random.Range(5, 12);
+            generatedStrength = (int)UnityEngine.Random.Range(10, 90);
+            generatedDuration = (int)UnityEngine.Random.Range(4, 10);
             strengthValue.text = $"Boost strength: +{generatedStrength}%";
             durationValue.text = $"Boost strength: {generatedDuration}s";
-            isChoosingTurret = true;
             return;
         }
 
@@ -438,19 +454,36 @@ public class GameUIManager : MonoBehaviour
 
     public void GetNormalBoost()
     {
-        Debug.Log("XD");
-        isChoosingTurret = true;
         popUp.SetActive(false);
         Time.timeScale = 1f;
+        SpawnSkillPrefab();
+    }
+
+
+    [Header("SkillList")]
+    [SerializeField] GameObject skillList;
+    [SerializeField] GameObject boostPrefab;
+
+    public void SpawnSkillPrefab()
+    {
+        if (skillList.transform.childCount >= 5)
+        {
+            stageWave.text = "Too many boosts";
+            return;
+        }
+        GameObject x = Instantiate(boostPrefab, Vector3.zero, Quaternion.identity);
+        x.GetComponent<BoostBehaviour>().SetStats(generatedBoost, generatedStrength, generatedDuration);
+        x.transform.SetParent(skillList.transform);
     }
 
     public void GetAdBoost()
     {
         generatedStrength *= 2;
         generatedDuration *= 2;
-        isChoosingTurret = true;
         popUp.SetActive(false);
         Time.timeScale = 1f;
+        SpawnSkillPrefab();
+
     }
 
     public void GetNormalReward()
@@ -469,10 +502,6 @@ public class GameUIManager : MonoBehaviour
         Time.timeScale = 1f;
     }
 
-    public void GeneratePopupBoost()
-    {
-
-    }
     #endregion
 
 

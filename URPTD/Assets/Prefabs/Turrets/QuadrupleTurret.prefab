@@ -10658,6 +10658,7 @@ Transform:
   - {fileID: 2375598313992479189}
   - {fileID: 1910285528087864283}
   - {fileID: 9156597297221322538}
+  - {fileID: 4077300448214296010}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 33.65, z: 0}
@@ -10690,6 +10691,7 @@ MonoBehaviour:
   playerDestroyed: {fileID: 8300000, guid: 209601db05ad9bf4ba043ee0d9b0c91e, type: 3}
   deathExplosion: {fileID: 2375598313992479188}
   levelUpEffect: {fileID: 5882945518595734611}
+  boostEffects: []
   animatorSingle: {fileID: 2149956624932272763}
   animatorDouble: {fileID: 2149956624456757051}
   animatorSpecial: {fileID: 655290013764885857}
@@ -10699,6 +10701,7 @@ MonoBehaviour:
   isReloading: 0
   isReloading2: 0
   isDead: 0
+  skillList: {fileID: 8203621466308934576}
   listOfOrbitalBullets: []
   selected: {fileID: 829231336407603158}
 --- !u!65 &2149956625488448734
@@ -10952,6 +10955,73 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &1366091669313315851
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2149956625488448732}
+    m_Modifications:
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7146169588228988859, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+      propertyPath: m_Name
+      value: BoostEffects
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+--- !u!1 &8203621466308934576 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7146169588228988859, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+  m_PrefabInstance: {fileID: 1366091669313315851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4077300448214296010 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3053491146674192833, guid: 21bae015a1ae4c19b8da22032b7bc589, type: 3}
+  m_PrefabInstance: {fileID: 1366091669313315851}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2149956623863924986
 PrefabInstance:
   m_ObjectHideFlags: 0
